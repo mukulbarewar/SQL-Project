@@ -1,0 +1,136 @@
+
+
+
+
+----module2 21-03-2023 
+
+--1.Create a customer table which comprises of these columns – ‘customer_id’, ‘first_name’,
+--‘last_name’, ‘email’, ‘address’, ‘city’,’state’,’zip’
+
+CREATE TABLE CUSTOMERS(
+CUSTOMER_ID INT,
+FIRST_NAME VARCHAR(50),
+LAST_NAME VARCHAR(50),
+EMAIL VARCHAR(50),
+ADDRESS VARCHAR(50),
+CITY VARCHAR(50),
+STATE VARCHAR(50),
+ZIP VARCHAR(10)
+)
+
+--2.Insert 5 new records into the table
+
+
+
+INSERT INTO CUSTOMERS VALUES
+	  (10,'JEMMI','JORDAN','JEM@GMAIL.COM','2ND FLOOR GANDHI NAGAR','SANJOSE','KARNATAKA','33222'),
+	  (20,'GAGANA','AVANTHIKA','GAGANA@GMAIL.COM','3ND FLOOR JAYA NAGAR','SHANTI NAGAR','KASHMIR','22222'),
+	  (30,'JESSICA','VANYA','VANYA@GMAIL.COM','19TH BLOCK BOMMARI','ALLEPPY','TAMIL NADU','33333'),
+	  (40,'JERUSHA','JERU','JERU@GMAIL.COM','4TH FLOOR','OOTY','DELHI','44444'),
+	  (50,'GRACE','ZIPPORA','GRACE@GMAIL.COM','5TH FLOOR','SAN JOSE','UTTAR PRADESH','55555');
+
+--3.Select only the ‘first_name’ & ‘last_name’ columns from the customer table
+
+select first_name,last_name from customers
+
+select first_name name,last_name,concat(first_name,' ',last_name) fullname from CUSTOMERS
+
+
+--4.Select those records where ‘first_name’ starts with “G” and city is ‘San Jose’
+
+select first_name from CUSTOMERS where city='san jose' and first_name like 'g%'
+
+-------------------------------------------
+select datename(year,getdate())
+
+select datename(weekday,eomonth(getdate()))
+
+select eomonth(getdate())
+-------------------------------------------
+
+--module 3 
+
+--1.Create an ‘Orders’ table which comprises of these columns – 
+--‘order_id’, ‘order_date’, ‘amount’, ‘customer_id’
+
+CREATE TABLE ORDERS11(ORDER_ID INT,ORDER_DATE date,AMOUNT INT, CUSTOMER_ID INT);
+
+--2.Make an inner join on ‘Customer’ & ‘Order’ tables on the ‘customer_id’ column 
+
+INSERT INTO ORDERS11 VALUES(10,'2020-10-01',9000,20),
+						(20,'2020-10-01',9000,10),
+						(30,'2020-10-02',8000,2),
+						(40,'2020-10-03',7000,30),
+						(50,'2020-10-04',6000,4),
+						(114,'2020-10-05',5000,5);
+select * from orders11
+
+					
+--3.Make left and right joins on ‘Customer’ & ‘Order’ tables on the ‘customer_id’ column
+
+select * from customers join ORDERS11 on CUSTOMERS.CUSTOMER_ID=ORDERS11.CUSTOMER_ID
+
+
+select * from CUSTOMERS left join orders11 on CUSTOMERS.CUSTOMER_ID=ORDERS11.CUSTOMER_ID
+
+select * from CUSTOMERS right join orders11 on CUSTOMERS.CUSTOMER_ID=ORDERS11.CUSTOMER_ID
+
+
+--4.Update the ‘Orders’ table, set the amount to be 100 where ‘customer_id’ is 3
+
+update orders11
+set amount=100
+where customer_id=3
+--------------------------------------------
+
+select datename(weekday,eomonth(getdate(),1))
+
+select datename(weekday,eomonth(dateadd(month,1,getdate())))
+
+
+----------------------------------
+
+
+--module 5
+
+--1.Arrange the ‘Orders’ dataset in decreasing order of amount
+
+select * from orders11
+order by amount desc
+
+--2.Create a table with name ‘Employee_details1’ and comprising of these columns – 
+--‘Emp_id’, ‘Emp_name’, ‘Emp_salary’. Create another table with name ‘Employee_details2’, 
+--which comprises of same columns as first table.
+
+create table employee_Details2
+(
+emp_id int,
+emp_name varchar(20),
+emp_salary int
+)
+
+select * into employee_details1
+from employee_details2
+
+select * from employee_details1
+select * from employee_Details2
+
+
+--3.Apply the union operator on these two tables
+
+--4.Apply the intersect operator on these two tables
+
+--5.Apply the except operator on these two tables
+
+select getdate()
+
+select datename(month,getdate())
+
+select eomonth(getdate(),1)--30
+
+SELECT DATENAME(WEEKDAY,EOMONTH(GETDATE(),1))
+
+
+select DATEFROMPARTS(2023,03,23)
+
+-------------------------------------------------------
